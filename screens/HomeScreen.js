@@ -244,7 +244,9 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.debugBanner}>
         <Text style={styles.debugText}>DEBUG: Home montada — comprueba la consola para logs de API</Text>
       </View>
-      {renderStats()}
+      <View style={styles.statsWrapper}>
+        <StatsScroller stats={stats} />
+      </View>
       {renderFilters()}
       
       {filteredPersons.length === 0 ? (
@@ -269,6 +271,7 @@ export default function HomeScreen({ navigation }) {
       ) : (
         Platform.OS === 'web' ? (
           <ScrollView
+            style={styles.webListScroll}
             contentContainerStyle={styles.list}
             keyboardShouldPersistTaps="handled"
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
@@ -303,7 +306,7 @@ export default function HomeScreen({ navigation }) {
       />
 
       <FAB
-        style={styles.fab}
+        style={[styles.fab, Platform.OS === 'web' && styles.fabWeb]}
         icon="plus"
         onPress={() => navigation.navigate('AddPerson')}
       />
@@ -315,6 +318,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
+  },
+  debugBanner: {
+    backgroundColor: '#e6fffa',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    alignItems: 'center',
+  },
+  debugText: {
+    color: '#065f46',
+    fontSize: 12,
+  },
+  statsWrapper: {
+    paddingHorizontal: 0,
+  },
+  webListScroll: {
+    maxHeight: '60vh',
+    overflow: 'auto',
   },
   centerContainer: {
     flex: 1,
@@ -436,5 +456,12 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     backgroundColor: '#0d9488',
+  },
+  fabWeb: {
+    position: 'fixed',
+    right: 24,
+    bottom: 24,
+    zIndex: 1000,
+    elevation: 8,
   },
 });

@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import AddPersonScreen from './screens/AddPersonScreen';
 import EditPersonScreen from './screens/EditPersonScreen';
 import DetailsPersonScreen from './screens/DetailsPersonScreen';
+import StudentProfileScreen from './screens/StudentProfileScreen';
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,8 @@ export default function App() {
             component={HomeScreen}
             options={{ title: 'Gestión de Personal' }}
           />
+
+          
           <Stack.Screen
             name="AddPerson"
             component={AddPersonScreen}
@@ -53,6 +56,11 @@ export default function App() {
             name="DetailsPerson"
             component={DetailsPersonScreen}
             options={{ title: 'Detalles del Personal' }}
+          />
+          <Stack.Screen
+            name="StudentProfile"
+            component={StudentProfileScreen}
+            options={{ title: 'Perfil del Alumno' }}
           />
         </Stack.Navigator>
       </NavigationContainer>
