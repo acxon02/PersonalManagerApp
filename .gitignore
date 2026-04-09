@@ -1,41 +1,84 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
-# dependencies
+# Dependencies
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
 
-# Expo
+# Expo / React Native
 .expo/
+.expo-shared/
 dist/
 web-build/
 expo-env.d.ts
+.metro-health-check*
 
-# Native
-.kotlin/
-*.orig.*
+# Native generated folders
+/android
+/ios
+/obj
+/bin
+
+# Build outputs
+*.apk
+*.ipa
+*.aab
+*.keystore
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
+*.orig.*
+*.orig
 
-# Metro
-.metro-health-check*
+# Metro bundler cache
+.cache/
+metro-*.log
 
-# debug
+# Debug files
+*.tsbuildinfo
+*.log
 npm-debug.*
 yarn-debug.*
 yarn-error.*
 
-# macOS
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.secret
+
+# System files
 .DS_Store
+Thumbs.db
+desktop.ini
 *.pem
 
-# local env files
-.env*.local
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.kov.json
+.vscode/
 
-# typescript
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Local configuration
+*.local
+
+# TypeScript
 *.tsbuildinfo
 
-# generated native folders
-/ios
-/android
+# Coverage directory used by tools like jest
+coverage/
+.nyc_output/
+
+# Optional: Keep the .gitignore file itself
+!.gitignore
